@@ -2,10 +2,9 @@ const concatStrings = (string, separator) => {
   let sumOfStrings = string;
 
   const additionalString = (nextString) => {
-    if (typeof sumOfStrings !== 'string' || typeof nextString !== 'string') return sumOfStrings;
     if (typeof separator !== 'string') separator = '';
 
-    if (nextString || nextString === '') {
+    if ((nextString && typeof nextString === 'string') || nextString === '') {
       sumOfStrings += separator + nextString;
       return additionalString;
     }
