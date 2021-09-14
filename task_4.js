@@ -1,17 +1,16 @@
 const concatStrings = (string, separator) => {
-  let sumOfStrings = [string];
+  let sumOfStrings = string;
 
   const additionalString = (nextString) => {
-    if (Number.isFinite(nextString) || typeof nextString === 'bigint') {
-      return sumOfStrings.join(separator || '');
-    }
+    if (typeof sumOfStrings !== 'string' || typeof nextString !== 'string') return sumOfStrings;
+    if (typeof separator !== 'string') separator = '';
 
     if (nextString || nextString === '') {
-      sumOfStrings.push(nextString);
+      sumOfStrings += separator + nextString;
       return additionalString;
     }
 
-    return sumOfStrings.join(separator || '');
+    return sumOfStrings;
   };
 
   return additionalString;
