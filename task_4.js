@@ -1,3 +1,22 @@
+const concatStrings = (string, separator) => {
+  let sumOfStrings = [string];
+
+  const additionalString = (nextString) => {
+    if (Number.isFinite(nextString) || typeof nextString === 'bigint') {
+      return sumOfStrings.join(separator || '');
+    }
+
+    if (nextString || nextString === '') {
+      sumOfStrings.push(nextString);
+      return additionalString;
+    }
+
+    return sumOfStrings.join(separator || '');
+  };
+
+  return additionalString;
+};
+
 class Calculator {
   constructor(x, y) {
     this.x = x;
